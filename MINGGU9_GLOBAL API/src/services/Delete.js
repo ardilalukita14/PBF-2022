@@ -10,7 +10,7 @@ const DeleteAPI = (path, data) => {
             }, (err) => {
                 reject(err);                             // jika terjadi error dari server (server down, dll),
             })
-    })
+    });
     return promise;
 }
 export default DeleteAPI;
