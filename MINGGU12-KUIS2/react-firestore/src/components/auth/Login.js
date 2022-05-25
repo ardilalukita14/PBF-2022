@@ -1,17 +1,18 @@
 import { useRef, useState } from "react";
 import './Login.css';
 import './Layout.css';
-import { login } from "../../Firebase";
+import { login, googleProvider } from "../../Firebase";
+
 
 export default function Login(props) {
-    const emailRef = useRef();
-    const passwordRef = useRef();
+    const emailDat = useRef();
+    const passwordDat = useRef();
     const [error, setError] = useState("");
 
     async function handleSubmit(e) {
         // setLoading(true)
         try {
-            await login(emailRef.current.value, passwordRef.current.value);
+            await login(emailDat.current.value, passwordDat.current.value);
             alert("SELAMAT DATANG DI POLINEMA")
             props.history.push('/welcome')
         } catch (e) {
@@ -21,6 +22,7 @@ export default function Login(props) {
         // setLoading(false);
 
     }
+
     return (
         <div>
             <div class="containerLogin">
@@ -36,13 +38,13 @@ export default function Login(props) {
                     </div>
                     <div className="field">
                         <b><label>E-MAIL</label><br></br></b>
-                        <input ref={emailRef} type="email" className="form-control" placeholder="Email" />
+                        <input ref={emailDat} type="email" className="form-control" placeholder="Email" />
                     </div>
                     <br></br>
 
                     <div className="field">
                         <b><label>PASSWORD</label><br></br></b>
-                        <input ref={passwordRef} type="password" className="form-control" placeholder="Password" />
+                        <input ref={passwordDat} type="password" className="form-control" placeholder="Password" />
                     </div>
 
                     <br>

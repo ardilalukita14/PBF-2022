@@ -4,15 +4,15 @@ import { register } from "../../Firebase";
 
 export default function Register(props) {
     // const [loading, setLoading] = useState(false);
-    const emailRef = useRef();
-    const passwordRef = useRef();
+    const emailDat = useRef();
+    const passwordDat = useRef();
     const [error, setError] = useState("");
 
 
     async function handleSubmit(e) {
         // setLoading(true)
         try {
-            await register(emailRef.current.value, passwordRef.current.value);
+            await register(emailDat.current.value, passwordDat.current.value);
             props.history.push('/')
         } catch (e) {
             setError(e.message);
@@ -39,13 +39,13 @@ export default function Register(props) {
                     </div>
                     <div className="field">
                         <b><label>E-MAIL</label><br></br></b>
-                        <input ref={emailRef} type="email" className="form-control" placeholder="Email" />
+                        <input ref={emailDat} type="email" className="form-control" placeholder="Email" />
                     </div>
                     <br></br>
 
                     <div className="field">
                         <b><label>PASSWORD</label><br></br></b>
-                        <input ref={passwordRef} type="password" className="form-control" placeholder="Password" />
+                        <input ref={passwordDat} type="password" className="form-control" placeholder="Password" />
                     </div>
 
                     <br>

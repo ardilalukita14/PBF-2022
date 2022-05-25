@@ -66,7 +66,7 @@ class Edit extends Component {
         semester:'',
         ipk:''
       });
-      this.props.history.push("/welcome/show/"+this.props.match.params.id)
+      this.props.history.push("/show/"+this.props.match.params.id)
     })
     .catch((error) => {
       console.error("Error adding document: ", error);
@@ -89,11 +89,11 @@ class Edit extends Component {
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="nim">NIM:</label>
-                <input type="id" class="form-control" name="nim" value={this.state.nim} onChange={this.onChange} placeholder="NIM Mahasiswa" />
+                <input disabled type="id" class="form-control" name="nim" value={this.state.nim} onChange={this.onChange} placeholder="NIM Mahasiswa" />
               </div>
               <div class="form-group">
                 <label for="nama_mahasiswa">Nama:</label>
-                <input type="text" class="form-control" name="nama_mahasiswa" value={this.state.nama_mahasiswa} onChange={this.onChange} placeholder="Nama Mahasiswa" />
+                <input disabled type="text" class="form-control" name="nama_mahasiswa" value={this.state.nama_mahasiswa} onChange={this.onChange} placeholder="Nama Mahasiswa" />
               </div>
               <div class="form-group">
                 <label for="jurusan">Jurusan:</label>
