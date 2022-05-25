@@ -72,6 +72,10 @@ class Show extends Component {
             <label for="ipk">IPK:</label>
             <input type="text" class="form-control" name="ipk" value={this.state.mahasiswa.ipk}></input>
           </div>
+          <div class="form-group">
+            <label for="status">Status:</label>
+            <input type="text" class="form-control" name="status" value={this.state.mahasiswa.status}></input>
+          </div>
           <br></br>
           <Link to={`/welcome`} class="btn btn-success">Kembali</Link>&nbsp;
           <button onClick={this.delete.bind(this, this.state.key)} class="btn btn-danger">Delete</button>

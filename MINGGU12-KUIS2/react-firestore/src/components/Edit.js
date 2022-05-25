@@ -13,7 +13,8 @@ class Edit extends Component {
       jurusan: '',
       prodi: '',
       semester:'',
-      ipk:''
+      ipk:'',
+      status:'',
     };
   }
 
@@ -29,7 +30,8 @@ class Edit extends Component {
           jurusan: mahasiswa.jurusan,
           prodi: mahasiswa.prodi,
           semester: mahasiswa.semester,
-          ipk: mahasiswa.ipk
+          ipk: mahasiswa.ipk,
+          status: mahasiswa.status,
         });
       } else {
         console.log("No such document!");
@@ -46,7 +48,7 @@ class Edit extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { nim, nama_mahasiswa, jurusan, prodi, semester, ipk } = this.state;
+    const { nim, nama_mahasiswa, jurusan, prodi, semester, ipk, status } = this.state;
 
     const updateRef = firebase.firestore().collection('mahasiswa').doc(this.state.key);
     updateRef.set({
@@ -55,7 +57,8 @@ class Edit extends Component {
       jurusan,
       prodi,
       semester,
-      ipk
+      ipk,
+      status
     }).then((docRef) => {
       this.setState({
         key: '',
@@ -64,7 +67,8 @@ class Edit extends Component {
         jurusan:'',
         prodi:'',
         semester:'',
-        ipk:''
+        ipk:'',
+        status:''
       });
       this.props.history.push("/show/"+this.props.match.params.id)
     })
@@ -110,6 +114,10 @@ class Edit extends Component {
               <div class="form-group">
                 <label for="ipk">IPK:</label>
                 <input type="text" class="form-control" name="ipk" value={this.state.ipk} onChange={this.onChange} placeholder="IPK" />
+              </div>
+              <div class="form-group">
+                <label for="status">Status:</label>
+                <input type="text" class="form-control" name="status" value={this.state.status} onChange={this.onChange} placeholder="STATUS" />
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>

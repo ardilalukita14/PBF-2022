@@ -17,7 +17,7 @@ class App extends Component {
   onCollectionUpdate = (querySnapshot) => {
     const mahasiswa = [];
     querySnapshot.forEach((doc) => {
-      const { nim, nama_mahasiswa, jurusan, prodi, semester, ipk} = doc.data();
+      const { nim, nama_mahasiswa, jurusan, prodi, semester, ipk, status} = doc.data();
       mahasiswa.push({
         key: doc.id,
         doc, // DocumentSnapshot
@@ -27,6 +27,7 @@ class App extends Component {
         prodi,
         semester,
         ipk,
+        status,
       });
     });
     this.setState({
@@ -74,6 +75,7 @@ class App extends Component {
                                 <th>Prodi</th>
                                 <th>Semester</th>
                                 <th>IPK</th>
+                                <th>STATUS</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -88,6 +90,7 @@ class App extends Component {
                                         <td>{mahasiswa.prodi}</td>
                                         <td>{mahasiswa.semester}</td>
                                         <td>{mahasiswa.ipk}</td>
+                                        <td>{mahasiswa.status}</td>
                                         <td><Link to={`/edit/${mahasiswa.key}`} class="btn btn-warning">Edit</Link>&nbsp;
                                             <Link to={`/show/${mahasiswa.key}`} class="btn btn-success">Detail</Link>&nbsp;
                                         </td>

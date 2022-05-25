@@ -14,6 +14,7 @@ class Create extends Component {
       prodi:'',
       semester:'',
       ipk:'',
+      status:'',
     };
   }
   onChange = (e) => {
@@ -25,7 +26,7 @@ class Create extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { nim, nama_mahasiswa, jurusan, prodi, semester, ipk } = this.state;
+    const { nim, nama_mahasiswa, jurusan, prodi, semester, ipk, status } = this.state;
 
     this.ref.add({
       nim,
@@ -34,6 +35,7 @@ class Create extends Component {
       prodi, 
       semester, 
       ipk,
+      status,
     }).then((docRef) => {
       this.setState({
         nim: '',
@@ -42,6 +44,7 @@ class Create extends Component {
         prodi:'', 
         semester:'', 
         ipk: '',
+        status:'',
       });
       this.props.history.push("/welcome")
     })
@@ -51,7 +54,7 @@ class Create extends Component {
   }
 
   render() {
-    const { nim, nama_mahasiswa, jurusan, prodi, semester, ipk } = this.state;
+    const { nim, nama_mahasiswa, jurusan, prodi, semester, ipk, status } = this.state;
     return (
       <div class="container">
         <div class="panel panel-default">
@@ -88,6 +91,10 @@ class Create extends Component {
               <div class="form-group">
                 <label for="ipk">IPK:</label>
                 <input type="text" class="form-control" name="ipk" value={this.state.ipk} onChange={this.onChange} placeholder="IPK" />
+              </div>
+              <div class="form-group">
+                <label for="status">Status:</label>
+                <input type="text" class="form-control" name="status" value={this.state.status} onChange={this.onChange} placeholder="STATUS" />
               </div>
               <button type="submit" class="btn btn-success">Submit</button>
             </form>
